@@ -4,22 +4,18 @@ from scipy.integrate import quad
 # find exact value of given point for given function
 def f_value_in_point(f, p):
     return f(p)
-
 # calculates abs error
 def abs_error(approx_val, abs_val):
     return approx_val - abs_val
-
 # calculates approximate error
 def approx_error(approx_val, abs_val):
     return 100 * np.abs((abs_val - approx_val) / abs_val)
-
 # params:
 # f - function to integrate,
 # a - lower limit,
 # b - upper limit.
 def exact(f, a, b):
     return quad(f, a, b)[0]
-
 # params:
 # f - function to integrate,
 # N - number of points to generate randomly
@@ -64,29 +60,33 @@ def plot_points(under_curve, above_curve):
     plt.legend(['above','under'])
     plt.show()
 # case #1 (test: trigonometrical positively defined function a = 0, b = 1)
-print('Case 1 ')
+# case #1 (test: trigonometrical positively defined function a = 0, b = 1)
+print('Case 1')
 print('f = 10 + 5*sin(5*x)  a=0 b=1')
 f1 = lambda x: (10 + 5 * np.sin(5 * x)) ** 2
 Monte_Carlo = montecarlo(f1, 0, 1, 1000)
 Exact_Value, _ = quad(f1, 0, 1)
-print('Monte_Carlo   Exact_Value     Abs_Error   Approx_Error')
-print(
-    f'{Monte_Carlo}         {Exact_Value}        {abs_error(Monte_Carlo, Exact_Value)}        {approx_error(Monte_Carlo, Exact_Value)}%')
+print("Monte Carlo: {:.6f}".format(Monte_Carlo))
+print("Exact Value: {:.6f}".format(Exact_Value))
+print("Absolute Error: {:.6f}".format(abs_error(Monte_Carlo, Exact_Value)))
+print("Relative Error: {:.6f}%".format(approx_error(Monte_Carlo, Exact_Value)))
+
 print(f'value in x = 0; y = {f_value_in_point(f1, 0)}')
 print('------------------------------------------------')
 
 # case #2 (main)
-print('Case 2 ')
+print('Case 2')
 print('exp(x).*x.^2.*sqrt(exp(x))   a=1 b=2')
 f2 = lambda x: np.exp(x) * x ** 2 * np.sqrt(np.exp(x))
 Monte_Carlo = montecarlo(f2, 1, 2, 1000)
 Exact_Value, _ = quad(f2, 1, 2)
-labels = []
-print('Monte_Carlo   Exact_Value     Abs_Error   Approx_Error')
-print(
-    f'{Monte_Carlo}         {Exact_Value}        {abs_error(Monte_Carlo, Exact_Value)}        {approx_error(Monte_Carlo, Exact_Value)}%')
+print("Monte Carlo: {:.6f}".format(Monte_Carlo))
+print("Exact Value: {:.6f}".format(Exact_Value))
+print("Absolute Error: {:.6f}".format(abs_error(Monte_Carlo, Exact_Value)))
+print("Relative Error: {:.6f}%".format(approx_error(Monte_Carlo, Exact_Value)))
 print(f'value in x = 1; y = {f_value_in_point(f2, 1)}')
 print('------------------------------------------------')
+
 
 
 
