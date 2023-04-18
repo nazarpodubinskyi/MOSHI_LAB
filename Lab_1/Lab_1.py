@@ -65,7 +65,7 @@ class SimulatedAnnealing:
             self.temperature *= self.cooling_rate
         return chessboard.board
 
-n = 20
+n = 30
 # size of chessboard (n x n)
 
 chessboard = Chessboard(n) # generate initial configuration
