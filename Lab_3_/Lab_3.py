@@ -1,17 +1,12 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
-from numpy.random import uniform
 from sklearn.datasets import make_blobs
-import seaborn as sns
-import random
 import pandas as pd
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from IPython.display import clear_output
-from scipy.stats.mstats import gmean
 
-N = 1000
+
+N = 10000
 
 X, y = make_blobs(n_samples=N, centers=None, n_features=2, random_state=0, center_box=(1, 40), cluster_std=1.5)
 print(X)
@@ -19,14 +14,6 @@ print(X)
 data = pd.DataFrame(X, columns=['x', 'y'])
 
 data.to_csv('out.csv', index=False)
-
-
-# For k-means algorithms
-# 1. Scale the data (some values can have more importance than others due to their x or y value, so we need to change that in order to ensure all data points has same importance in clustering)
-# 2. Initialize random centroids
-# 3. Label each data point (to see how far each data point from centroid)
-# 4. Update centroids
-# 5. Repeat steps 3 and 4 until centroids stop changing
 
 
 class K_Klustering:
@@ -85,8 +72,8 @@ def plot_clusters(data, labels, centroids, iteration):
 plt.ion()
 # scaled_data=scale_data(data=data)
 scaled_data = data
-max_iterations = 100
-k = 2
+max_iterations = 1000
+k = 4
 
 centroids = random_centroids(data=scaled_data, k=k)
 old_centroids = pd.DataFrame()

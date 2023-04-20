@@ -17,7 +17,7 @@ plt.show()
 
 data = list(zip(data_2d[:,0],data_2d[:,1]))
 
-hierarchical_cluster = AgglomerativeClustering(n_clusters=2, affinity='euclidean', linkage='ward')
+hierarchical_cluster = AgglomerativeClustering(n_clusters=4, affinity='euclidean', linkage='ward')
 labels = hierarchical_cluster.fit_predict(data)
 
 plt.scatter(data_2d[:,0],data_2d[:,1], c=labels)
