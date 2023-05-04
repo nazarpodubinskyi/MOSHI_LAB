@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from IPython.display import clear_output
 
 
-N = 10000
+N = 1000
 
 X, y = make_blobs(n_samples=N, centers=None, n_features=2, random_state=0, center_box=(1, 40), cluster_std=1.5)
 print(X)
