@@ -65,7 +65,7 @@ for i in range(10):
     evaporation_rate = np.random.uniform(0.1, 0.9)
     Q = np.random.randint(1, 11)
     best_path, best_path_length = ant_colony_optimization(points, n_ants=n_ants, n_iterations=100, alpha=alpha, beta=beta, evaporation_rate=evaporation_rate, Q=Q)
-    print(f"Iteration {i+1}: Best Path = {best_path}, Best Path Length = {best_path_length},Number o ants = {n_ants}, alpha= {alpha}, beta= {beta}")
+    print(f"Iteration {i+1}: Best Path = {best_path},\n Best Path Length = {best_path_length},Number o ants = {n_ants}, alpha= {alpha}, beta= {beta}")
     plt.figure(figsize=(8, 6))
     plt.scatter(points[:, 0], points[:, 1], c='r', marker='o')
     for i in range(N - 1):
