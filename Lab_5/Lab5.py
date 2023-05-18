@@ -3,7 +3,7 @@ import copy
 from prettytable import PrettyTable
 
 max_fitness = 2000
-population_size = 50
+population_size = 100
 max_generations = 50
 mutation_rate = 0.1
 crossover_rate = 0.9
@@ -209,8 +209,10 @@ def genetic_algorithm(lesson_names, teachers, classes, num_lessons, num_classes,
 
 
 def print_schedule(schedule, num_days, max_lessons_per_day, num_classes, class_names):
+
     table = PrettyTable()
-    table.field_names = ["Клас", "Урок"] + [f"Day {day_index + 1}" for day_index in range(num_days)]
+    days_of_week = ["Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця"]
+    table.field_names = ["Клас", "Урок"] + days_of_week[:num_days]
 
     for class_index in range(num_classes):
         for lesson_index in range(max_lessons_per_day):
@@ -229,6 +231,7 @@ def print_schedule(schedule, num_days, max_lessons_per_day, num_classes, class_n
 
 
 
+
 def main():
     num_lessons = 23
     num_classes = 2
@@ -236,10 +239,10 @@ def main():
     max_lessons_per_day = 5
 
     teachers = [
-        Teacher("Teacher 1", ["Математика", "Фізика", "Хімія", "Географія"]),
-        Teacher("Teacher 2", ["Математика", "Фізика", "Хімія", "Музика"]),
-        Teacher("Teacher 3", ["Математика", "Фізика", "Хімія", "Географія"]),
-        Teacher("Teacher 4", ["Фізкультура", "Труд. навч."]),
+        Teacher("Чорна Г.С.", ["Математика", "Фізика", "Хімія", "Географія"]),
+        Teacher("Дутка М.І.", ["Математика", "Фізика", "Хімія", "Музика"]),
+        Teacher("Шпаченко В.А.", ["Математика", "Фізика", "Хімія", "Географія"]),
+        Teacher("Кузик Р.Й.", ["Фізкультура", "Труд. навч."]),
     ]
 
     room_names = ["Кабінет 1", "Кабінет 2", "Кабінет 3", "Спортзал", "Майстерня", "Музичний клас"]
